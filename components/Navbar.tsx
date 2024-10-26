@@ -9,6 +9,8 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { RxDiscordLogo, RxGithubLogo } from "react-icons/rx";
+import { HiOutlineMail } from "react-icons/hi";
 
 const menuItems = [
   { title: "Home", href: "/" },
@@ -101,10 +103,11 @@ export default function Navbar() {
                 </Button>
               </form>
               {/* contact icon */}
-              {/* <div className="flex gap-1">
-                <Github />
-                <Discord />
-              </div> */}
+              <div className="flex gap-2">
+                <HiOutlineMail className="w-5 h-5" />
+                <RxGithubLogo className="w-5 h-5" />
+                <RxDiscordLogo className="w-5 h-5" />
+              </div>
               {/* Theme toggle */}
               <Button
                 variant="ghost"

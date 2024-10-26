@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 // import { useTheme } from "next-themes";
 import Link from "next/link";
+import { IoLogoVercel } from "react-icons/io5";
+import { SiNextdotjs } from "react-icons/si";
+import { FaReact } from "react-icons/fa";
 
 export default function HeroSectionHome() {
   const [mounted, setMounted] = useState(false);
@@ -62,18 +65,18 @@ export default function HeroSectionHome() {
       </motion.button>
       <section className="">
         <div className="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
-          {/* <h2 className="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
-            You’ll be in good company
-          </h2> */}
           <div className="flex lg:flex-row gap-8 text-gray-500 sm:gap-12 dark:text-gray-400">
             <Link href="#" className="flex justify-center items-center">
-              <span>Vercel</span>
+              <IoLogoVercel className="mr-1 h-16 w-16" />
+              <span className="text-6xl hidden lg:block">Vercel</span>
             </Link>
             <Link href="#" className="flex justify-center items-center">
-              <span>Next js</span>
+              <SiNextdotjs className="mr-1 h-16 w-16" />
+              <span className="text-6xl hidden lg:block">Next js</span>
             </Link>
             <Link href="#" className="flex justify-center items-center">
-              <span>react</span>
+              <FaReact className="mr-1 h-16 w-16" />
+              <span className="text-6xl hidden lg:block">React</span>
             </Link>
           </div>
         </div>

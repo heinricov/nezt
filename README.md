@@ -39,3 +39,4 @@ technology
 
 1. Shadcn/ui : https://ui.shadcn.com/docs/installation/next
 2. Frame Motion : https://www.framer.com/motion/introduction/
+3. React Icon : https://react-icons.github.io/react-icons/
