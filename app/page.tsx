@@ -1,3 +1,4 @@
+import WebBanner from "@/components/banner-web";
 import HeroSectionHome from "@/components/home-hero";
 import Feature from "@/components/section-feuture";
 import { Metadata } from "next";
@@ -13,6 +14,7 @@ export default function Home() {
       <main>
         <HeroSectionHome />
         <Feature />
+        <WebBanner />
       </main>
     </>
   );
