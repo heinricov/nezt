@@ -1,6 +1,7 @@
 import WebBanner from "@/components/banner-web";
 import HeroSectionHome from "@/components/home-hero";
 import Feature from "@/components/section-feuture";
+import TechStack from "@/components/section-myStack";
 import ProjectSampel from "@/components/section-sampel-project";
 import { Metadata } from "next";
 
@@ -17,6 +18,7 @@ export default function Home() {
         <Feature />
         <WebBanner />
         <ProjectSampel />
+        <TechStack />
       </main>
     </>
   );
