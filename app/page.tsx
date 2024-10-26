@@ -1,6 +1,7 @@
 import WebBanner from "@/components/banner-web";
 import HeroSectionHome from "@/components/home-hero";
 import Feature from "@/components/section-feuture";
+import ProjectSampel from "@/components/section-sampel-project";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function Home() {
         <HeroSectionHome />
         <Feature />
         <WebBanner />
+        <ProjectSampel />
       </main>
     </>
   );
