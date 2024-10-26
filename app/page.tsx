@@ -1,4 +1,5 @@
 import HeroSectionHome from "@/components/home-hero";
+import Feature from "@/components/section-feuture";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <main>
         <HeroSectionHome />
+        <Feature />
       </main>
     </>
   );
