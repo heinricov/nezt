@@ -25,15 +25,32 @@ export default function FapiPageSection() {
     alert("Terima kasih telah berlangganan!");
   };
 
-  const codeExample = `
-fetch('https://api.fakeapi.co/v1/users')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
+  const codeExampleReact = `
+useEffect(() => {
+  fetch('/api/users')
+    .then(response => response.json())
+    .then(data => console.log(data))
+}, [])
+`;
+
+  const codeExampleAxios = `
+import axios from 'axios'
+
+useEffect(() => {
+  axios.get('/api/users')
+    .then(response => console.log(response.data))
+}, [])
+}
 `;
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(codeExample.trim());
+    navigator.clipboard.writeText(codeExampleReact.trim());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const copyToClipboardAxios = () => {
+    navigator.clipboard.writeText(codeExampleAxios.trim());
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -78,39 +95,89 @@ fetch('https://api.fakeapi.co/v1/users')
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 text-black dark:text-white">
               Mulai Dengan Fake API
             </h2>
-            <Card className="w-full max-w-3xl mx-auto">
-              <CardHeader>
-                <CardTitle>Contoh Penggunaan</CardTitle>
-                <CardDescription>
-                  Salin kode di bawah ini untuk mulai menggunakan Fake API
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="relative">
-                  <pre className="bg-gray-800 text-white p-4 rounded-md overflow-x-auto">
-                    <code>{codeExample}</code>
-                  </pre>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="absolute top-2 right-2"
-                    onClick={copyToClipboard}
-                  >
-                    {copied ? (
-                      <CheckCircle className="h-4 w-4" />
-                    ) : (
-                      <Copy className="h-4 w-4" />
-                    )}
-                  </Button>
+
+            <Tabs defaultValue="react" className="w-full max-w-3xl mx-auto">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="react">React Komponen</TabsTrigger>
+                <TabsTrigger value="axios">Axios</TabsTrigger>
+              </TabsList>
+              <TabsContent value="react">
+                <div className="grid grid-cols-1">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>
+                        Contoh Penggunaan dengan React Komponen
+                      </CardTitle>
+                      <CardDescription>
+                        Salin kode di bawah ini untuk mulai menggunakan Fake API
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="relative">
+                        <pre className="bg-gray-800 text-white p-4 rounded-md overflow-x-auto">
+                          <code>{codeExampleReact}</code>
+                        </pre>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="absolute top-2 right-2"
+                          onClick={copyToClipboard}
+                        >
+                          {copied ? (
+                            <CheckCircle className="h-4 w-4" />
+                          ) : (
+                            <Copy className="h-4 w-4" />
+                          )}
+                        </Button>
+                      </div>
+                    </CardContent>
+                    <CardFooter>
+                      <p className="text-sm text-gray-500">
+                        Gunakan kode di atas untuk mengambil data pengguna dari
+                        Fake API kami.
+                      </p>
+                    </CardFooter>
+                  </Card>
                 </div>
-              </CardContent>
-              <CardFooter>
-                <p className="text-sm text-gray-500">
-                  Gunakan kode di atas untuk mengambil data pengguna dari Fake
-                  API kami.
-                </p>
-              </CardFooter>
-            </Card>
+              </TabsContent>
+              <TabsContent value="axios">
+                <div className="grid grid-cols-1">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Contoh Penggunaan dengan Axios</CardTitle>
+                      <CardDescription>
+                        Salin kode di bawah ini untuk mulai menggunakan Fake API
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="relative">
+                        <pre className="bg-gray-800 text-white p-4 rounded-md overflow-x-auto">
+                          <code>{codeExampleAxios}</code>
+                        </pre>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="absolute top-2 right-2"
+                          onClick={copyToClipboardAxios}
+                        >
+                          {copied ? (
+                            <CheckCircle className="h-4 w-4" />
+                          ) : (
+                            <Copy className="h-4 w-4" />
+                          )}
+                        </Button>
+                      </div>
+                    </CardContent>
+                    <CardFooter>
+                      <p className="text-sm text-gray-500">
+                        Gunakan kode di atas untuk mengambil data pengguna dari
+                        Fake API kami.
+                      </p>
+                    </CardFooter>
+                  </Card>
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </section>
 
