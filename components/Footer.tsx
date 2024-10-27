@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const pathname = usePathname();
-  const isProductPage = pathname.startsWith("/product,/about");
+  const isProductPage = pathname.startsWith("/product");
   return (
     <div className={isProductPage ? "flex-1 overflow-auto lg:ml-64" : ""}>
       <footer className="bg-white shadow dark:bg-gray-900 mt-auto">
