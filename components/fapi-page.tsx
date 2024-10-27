@@ -27,7 +27,7 @@ export default function FapiPageSection() {
 
   const codeExampleReact = `
 useEffect(() => {
-  fetch('/api/users')
+  fetch('https://nezt.vercel.app/api/users')
     .then(response => response.json())
     .then(data => console.log(data))
 }, [])
@@ -37,9 +37,44 @@ useEffect(() => {
 import axios from 'axios'
 
 useEffect(() => {
-  axios.get('/api/users')
+  axios.get('https://nezt.vercel.app/api/users')
     .then(response => console.log(response.data))
 }, [])
+}
+`;
+
+  const codeExampleUsePage = `
+'use client'
+
+import { useState, useEffect } from 'react'
+
+interface User {
+  id: number
+  nama: string
+  gender: string
+}
+
+export default function UserList() {
+  const [users, setUsers] = useState<User[]>([])
+
+  useEffect(() => {
+    fetch('/api/users')
+      .then(response => response.json())
+      .then(data => setUsers(data))
+  }, [])
+
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Daftar Pengguna</h1>
+      <ul className="space-y-2">
+        {users.map(user => (
+          <li key={user.id} className="bg-gray-100 p-2 rounded">
+            {user.nama} - {user.gender}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 `;
 
@@ -51,6 +86,12 @@ useEffect(() => {
 
   const copyToClipboardAxios = () => {
     navigator.clipboard.writeText(codeExampleAxios.trim());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const copyToClipboardUsePage = () => {
+    navigator.clipboard.writeText(codeExampleUsePage.trim());
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -178,6 +219,40 @@ useEffect(() => {
                 </div>
               </TabsContent>
             </Tabs>
+
+            <Card className="w-full max-w-3xl mx-auto mt-5">
+              <CardHeader>
+                <CardTitle>Contoh Penggunaan Di Halaman</CardTitle>
+                <CardDescription>
+                  Salin kode di bawah ini untuk mulai menggunakan Fake API
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="relative">
+                  <pre className="bg-gray-800 text-white p-4 rounded-md overflow-x-auto">
+                    <code>{codeExampleUsePage}</code>
+                  </pre>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute top-2 right-2"
+                    onClick={copyToClipboardUsePage}
+                  >
+                    {copied ? (
+                      <CheckCircle className="h-4 w-4" />
+                    ) : (
+                      <Copy className="h-4 w-4" />
+                    )}
+                  </Button>
+                </div>
+              </CardContent>
+              <CardFooter>
+                <p className="text-sm text-gray-500">
+                  Gunakan kode di atas untuk mengambil data pengguna dari Fake
+                  API kami.
+                </p>
+              </CardFooter>
+            </Card>
           </div>
         </section>
 
