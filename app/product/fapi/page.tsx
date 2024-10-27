@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Sidebar from "@/components/sidebar";
+import FapiPageSection from "@/components/fapi-page";
 
 export default function FapiPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -43,7 +44,7 @@ export default function FapiPage() {
       )}
       {/* Main Content */}
       <div className="flex-1 overflow-auto lg:ml-64">
-        <FapiPage />
+        <FapiPageSection />
       </div>
       <div className="flex-1 overflow-auto lg:ml-64">{""}</div>
     </>
