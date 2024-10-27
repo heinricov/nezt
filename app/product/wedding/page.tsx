@@ -4,9 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Sidebar from "@/components/sidebar";
-import PortfolioPage from "@/components/banner-feature-tech";
+import WeddingInvitationService from "@/components/wedding-page";
 
-export default function ProductPage() {
+export default function WeddingPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
@@ -44,7 +44,7 @@ export default function ProductPage() {
       )}
       {/* Main Content */}
       <div className="flex-1 overflow-auto lg:ml-64">
-        <PortfolioPage />
+        <WeddingInvitationService />
       </div>
       <div className="flex-1 overflow-auto lg:ml-64">{""}</div>
     </>
