@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Zap, Shield, Code, Check, Copy, CheckCircle } from "lucide-react";
+import React from "react";
 
 export default function FapiPageSection() {
   const [email, setEmail] = useState("");
@@ -95,6 +96,7 @@ export default function UserList() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -220,12 +222,26 @@ export default function UserList() {
               </TabsContent>
             </Tabs>
 
-            <Card className="w-full max-w-3xl mx-auto mt-5">
-              <CardHeader>
-                <CardTitle>Contoh Penggunaan Di Halaman</CardTitle>
-                <CardDescription>
-                  Salin kode di bawah ini untuk mulai menggunakan Fake API
-                </CardDescription>
+            <Card
+              className="w-full max-w-3xl mx-auto mt-5 transition-all duration-300 overflow-hidden"
+              style={{ height: isExpanded ? "auto" : "500px" }} // Atur tinggi card saat belum dibuka penuh
+            >
+              <CardHeader className="flex flex-row space-y-1.5">
+                <div>
+                  <CardTitle>Contoh Penggunaan Di Halaman</CardTitle>
+                  <CardDescription>
+                    Salin kode di bawah ini untuk mulai menggunakan Fake API
+                  </CardDescription>
+                </div>
+                {/* Tambahkan button untuk toggle penuh */}
+                <div className=" ml-32">
+                  <Button
+                    variant="outline"
+                    onClick={() => setIsExpanded(!isExpanded)}
+                  >
+                    {isExpanded ? "Tutup" : "Buka Selengkapnya"}
+                  </Button>
+                </div>
               </CardHeader>
               <CardContent>
                 <div className="relative">
