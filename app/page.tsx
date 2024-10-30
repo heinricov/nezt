@@ -15,8 +15,8 @@ export default function Home() {
     <>
       <main>
         <HeroSectionHome />
-        <Feature />
         <WebBanner />
+        <Feature />
         <ProjectSampel />
         <TechStack />
       </main>
